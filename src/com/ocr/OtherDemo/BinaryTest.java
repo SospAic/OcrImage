@@ -1,9 +1,9 @@
 package com.ocr.OtherDemo;
-import java.awt.Color;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 /**
  * 二值化
@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 public class BinaryTest {
 
     public static void main(String[] args) throws IOException {
-        BufferedImage bi=ImageIO.read(new File("C:\\mysoftware\\images\\upload\\OcrImg\\oi.jpg"));//通过imageio将图像载入
+        BufferedImage bi=ImageIO.read(new File("code/code.jpg"));//通过imageio将图像载入
         int h=bi.getHeight();//获取图像的高
         int w=bi.getWidth();//获取图像的宽
         int[][] gray=new int[w][h];
@@ -35,7 +35,7 @@ public class BinaryTest {
             }
         }
 
-        File file = new File("C:\\mysoftware\\images\\upload\\OcrResult\\or.jpg");
+        File file = new File("code/code.jpg");
         if (!file.exists())
         {
             File dir = file.getParentFile();

@@ -1,9 +1,10 @@
 package com.ocr.OtherDemo;
-import org.bytedeco.javacpp.opencv_core.Mat;
-import static org.bytedeco.javacpp.opencv_core.*;//定义了图像数据结构的核心库
-import static org.bytedeco.javacpp.opencv_highgui.*;//包含了所有图形接口函数
-import static org.bytedeco.javacpp.opencv_imgcodecs.*;
-import static org.bytedeco.javacpp.opencv_imgproc.*;	//COLOR_RGB2GRAY
+
+import org.bytedeco.opencv.opencv_core.Mat;
+import static org.bytedeco.opencv.global.opencv_core.flip;
+import static org.bytedeco.opencv.global.opencv_highgui.*;
+import static org.bytedeco.opencv.global.opencv_imgcodecs.*;
+import static org.bytedeco.opencv.global.opencv_imgproc.*;
 
 /**
  * javaCV灰度&图像二值化
@@ -12,7 +13,7 @@ public class JavaCV {
 
     public static void main(String[] args) {
         //图片地址
-        String imgUrl = "C:\\mysoftware\\images\\upload\\OcrImg\\girl.png";
+        String imgUrl = "code/code.jpg";
         //得到灰度图像
         getHuidu(imgUrl);
         //得到二值化处理图像
@@ -20,10 +21,10 @@ public class JavaCV {
     }
 
     //得到灰度图像
-    public static void getHuidu(String imgUrl){
-        Mat image=imread(imgUrl,CV_LOAD_IMAGE_GRAYSCALE);
+    private static void getHuidu(String imgUrl){
+        Mat image=imread(imgUrl,IMREAD_GRAYSCALE);
         //读入一个图像文件并转换为灰度图像（由无符号字节构成）
-        Mat image1=imread(imgUrl,CV_LOAD_IMAGE_COLOR);
+        Mat image1=imread(imgUrl,IMREAD_COLOR );
         //读取图像，并转换为三通道彩色图像，这里创建的图像中每个像素有3字节
         //如果输入图像为灰度图像，这三个通道的值就是相同的
         System.out.println("image has "+image1.channels()+" channel(s)");
@@ -36,7 +37,7 @@ public class JavaCV {
     }
 
     //得到二值化处理图像
-    public static void getErzhihua(String imgUrl){
+    private static void getErzhihua(String imgUrl){
         // TODO Auto-generated method stub
         Mat image=imread(imgUrl);	//加载图像
         if(image.empty())
